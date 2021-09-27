@@ -1,25 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import HomePage from './public/screens/HomePage';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import TopRestaurants from './public/screens/Top10';
+import Header from './public/components/Header';
+import Login from './public/screens/Login';
+import RestaurantList from './public/components/RestaurantList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+  const [user, setUser] = useState(null); 
+
+  useEffect(()=>{
+    fetch("/me")
+    .then((response) => { 
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handelLogin(user){
+    setUser(user);
+  }
+
+  function handleLogout(){
+    setUser(null);
+  }
+
+
+  return(<>
+    <Header user={user} onLogout={handleLogout}/>
+    <Router>
+      <Switch>
+        <Route exact path="/top_restaurants">
+          <TopRestaurants />
+        </Route>
+
+        <Route exact path="/all_restaurants">
+          <RestaurantList />
+        </Route>
+
+        <Route exact path="/">
+          <Login />
+        </Route>
+
+        <Route exact path="/homepage">
+          <HomePage />
+        </Route>
+      </Switch>
+    </Router>
+  </>)
 }
 
 export default App;
