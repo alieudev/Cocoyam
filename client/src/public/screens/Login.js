@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import { Form, Button } from 'react-bootstrap'
-import "/Users/alieubaldeh/Development/code/phase5/cocoyam/client/src/App.css"
-
+import "/Users/alieubaldeh/Development/code/phase5/african_restaurants/client/src/App.css"
 function Login({setErrors, setUser}) {
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const [loginErrors, setLoginErrors] = useState([])
@@ -11,7 +10,7 @@ function Login({setErrors, setUser}) {
     function onSubmit(e){
         e.preventDefault()
         const user = {
-            email,
+            username,
             password
         }
        
@@ -26,7 +25,7 @@ function Login({setErrors, setUser}) {
             if(json.error){
               setLoginErrors(json.error)
             }else{
-              setEmail(json)
+              setUsername(json)
               setErrors(false)
             }
         })
@@ -39,7 +38,7 @@ function Login({setErrors, setUser}) {
         <Form.Group>
             <Form.Label>Email</Form.Label>
             <br></br>
-            <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} />
         </Form.Group>
 
          <Form.Group className="mb-3" controlId="formBasicPassword">
