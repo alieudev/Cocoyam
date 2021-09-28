@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-
+import "../styles/restaurant_list.css"
 export default function RestaurantList(){
     const [restaurants, setRestaurants] = useState([]);
 
@@ -10,7 +10,7 @@ export default function RestaurantList(){
       }, []);
 
     return(
-    <section >
+    <section className ="restaurant-list">
         {restaurants.map((restaurant) => (
             <div key={restaurant.id} >
                 <img src={restaurant.image} alt={restaurant.name} />

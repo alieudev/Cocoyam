@@ -11,8 +11,14 @@ class ReviewsController < ApplicationController
 
     def create 
         review = Review.create!(review_params)
-        render
+        render json: review
     end
+
+    def update
+        review = Review.update!(review_params)
+        render json: review
+    end
+
 
     private 
     def review_params

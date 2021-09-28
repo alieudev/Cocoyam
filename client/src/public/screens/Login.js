@@ -1,58 +1,34 @@
-import React, {useState} from 'react'
-import { Form, Button } from 'react-bootstrap'
-import "/Users/alieubaldeh/Development/code/phase5/african_restaurants/client/src/App.css"
-function Login({setErrors, setUser}) {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+import { useState } from "react";
+import LoginForm from "../components/LoginForm";
+import SignUpForm from "../components/SignUpForm";
 
-    const [loginErrors, setLoginErrors] = useState([])
 
-    function onSubmit(e){
-        e.preventDefault()
-        const user = {
-            username,
-            password
-        }
-       
-        fetch(`/login`,{
-          method:'POST',
-          headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify(user)
-        })
-        .then(res => res.json())
-        .then(json => {
-          console.log('hi')
-            if(json.error){
-              setLoginErrors(json.error)
-            }else{
-              setUsername(json)
-              setErrors(false)
-            }
-        })
-    }
+function Login({ onLogin }) {
+
+  const [showLogin, setShowLogin] = useState(true);
+
     return (
-        <section className="login-form"> 
-        <Form onSubmit={onSubmit}>
-        <h1 variant="primary">Please Login</h1>
-        <br></br>
-        <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <br></br>
-            <input type="text" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </Form.Group>
-
-         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label >Password</Form.Label>
-            <br></br>
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </Form.Group>
-
-        <Button variant="danger" type="submit">
-            Log In
-         </Button>
-      </Form>
-      {loginErrors?loginErrors.map(e => <div>{e}</div>):null}
-    </section>
+      <div >
+      <div >
+         <div>
+      {showLogin ? (
+        <>
+      <LoginForm onLogin={onLogin} />
+      <div className="login">
+      Don't have an account? <button className="login" onClick={()=> setShowLogin(false)}>Sign up</button>
+      </div>
+      </>
+      ) : (
+        <>
+        <SignUpForm onLogin={onLogin} />
+        <br />
+        Already have an account? <button onClick={()=> setShowLogin(true)}>Log in</button>
+        </>
+      )}
+    </div>
+        </div>
+        </div>
     )
 }
+
 export default Login;

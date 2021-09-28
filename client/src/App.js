@@ -1,55 +1,36 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import HomePage from './public/screens/HomePage';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import TopRestaurants from './public/screens/Top10';
-import Header from './public/components/Header';
 import Login from './public/screens/Login';
-import RestaurantList from './public/components/RestaurantList';
+import NavBar from './public/components/NavBar';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState, useEffect } from "react"
+import HomePage from './public/screens/HomePage';
 
-function App(){
-  const [user, setUser] = useState(null); 
+function App() {
 
-  useEffect(()=>{
-    fetch("/me")
-    .then((response) => { 
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
       }
     });
   }, []);
 
-  function handelLogin(user){
-    setUser(user);
-  }
+  if (!user) return <Login onLogin={setUser} />;
 
-  function handleLogout(){
-    setUser(null);
-  }
-
-
-  return(<>
-    <Header user={user} onLogout={handleLogout}/>
-    <Router>
-      <Switch>
-        <Route exact path="/top_restaurants">
-          <TopRestaurants />
-        </Route>
-
-        <Route exact path="/all_restaurants">
-          <RestaurantList />
-        </Route>
-
-        <Route exact path="/">
-          <Login />
-        </Route>
-
-        <Route exact path="/homepage">
-          <HomePage />
-        </Route>
-      </Switch>
-    </Router>
-  </>)
+  return (
+    <div className="App">
+      <NavBar user={user} setUser={setUser}/>
+         <Router>
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+            </Switch>
+         </Router>
+    </div>
+  );
 }
 
 export default App;

@@ -10,8 +10,12 @@ class RestaurantsController < ApplicationController
     end
 
     def top
-        top_restaurants = Restaurant.all.order_by(:stars)
+        top_restaurants = Restaurant.all.order(:ratings).take(10)
         render json: top_restaurants, status: :ok
+    end
+
+    def all_locations 
+
     end
 
     private 
