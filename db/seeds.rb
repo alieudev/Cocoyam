@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# require_relative '../db/resdata.json'
 require 'faker'
+require 'json'
+file = File.read('/Users/alieubaldeh/Development/code/phase5/african_restaurants/db/resdata.json')
+rest = JSON.parse(file)
 
 puts "Deleting old stuff..."
     Restaurant.destroy_all
@@ -21,18 +23,17 @@ puts "Deleting old stuff..."
 
     puts "🌱 Seeding restaurants..."
 
-    30.times do |index|
+    rest.each do |res|
         Restaurant.create!(
-        name: "my_restaurant",
-        street: "123 Main St",
-        city: "New York",
-        state: "NY", 
-        zip: "10457", 
-        lat: "100", 
-        long: "100", 
-        rating: "10",
-        image: "https://1.bp.blogspot.com/-Wd9-K1sP7QY/XIsn37QQ1KI/AAAAAAAAn5Y/1TdnrOvKXVg64sxomo0kM0OtmdVgRkvdgCLcBGAs/s1600/african_restaurant.jpg"
-    )
+        name: res["name"],
+        street: res["location"]["address1"],
+        city: res["location"]["city"],
+        state: res["location"]["state"], 
+        zip: res["location"]["zip_code"], 
+        lat: res["coordinates"]["latitude"], 
+        long: res["coordinates"]["longitude"], 
+        rating: res["rating"],
+        image: res["image_url"] )
     end 
 
     puts "🌱 Seeding reviews..."
@@ -41,7 +42,4 @@ puts "Deleting old stuff..."
         )
     end
 
-
 puts "✅ Done seeding!"
-
-

@@ -10,12 +10,13 @@ class RestaurantsController < ApplicationController
     end
 
     def top
-        top_restaurants = Restaurant.all.order(:ratings).take(10)
+        top_restaurants = Restaurant.all.order(:ratings).take(5)
         render json: top_restaurants, status: :ok
     end
 
     def all_locations 
-
+        cordinates = Restaurant.select(:id, :name, :lat, :long)
+        render json: cordinates, status: :ok
     end
 
     private 

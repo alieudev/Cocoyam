@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/me", to:"users#show"
   post "/signup", to: "users#create"
   get "top_restaurants", to: "restaurants#top"
+  get "all_locations", to: "restaurants#all_locations"
 end
