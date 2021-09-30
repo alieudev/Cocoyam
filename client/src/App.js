@@ -6,6 +6,7 @@ import HomePage from './public/screens/HomePage';
 import TopRated from './public/screens/TopRated';
 import RestaurantCard from './public/components/RestaurantCard';
 import RestaurantList from './public/components/RestaurantList';
+import Test from './public/components/Test';
 
 function App() {
 
@@ -45,6 +46,9 @@ function App() {
               </Route>
               <Route exact path="/restaurants/:id">
                 <RestaurantCard />
+              </Route>
+              <Route exact path="/test">
+                <Test />
               </Route>
             </Switch>
          </Router>

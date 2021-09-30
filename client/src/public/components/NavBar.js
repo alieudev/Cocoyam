@@ -14,10 +14,13 @@ const NavBar = ({ user, setUser }) => {
     <Navbar expand="lg" bg="light" variant="light">
         <Container>
             <Navbar.Brand href="/">Cocoyam</Navbar.Brand>
-            <h1>Welcome {user.username}!</h1>
+            
+            <Nav.Link href={`/user/${user.id}`}>{user.username}</Nav.Link>
             <Nav.Link href="/top_restaurants">Top Rated</Nav.Link>
             <Nav.Link href="/restaurants">Restaurants</Nav.Link>
+            <Nav.Link href="/test">Test</Nav.Link>
             <Button variant="outline-dark" onClick={handleLogoutClick} >Logout</Button>
+
         </Container>      
     </Navbar>
     </>

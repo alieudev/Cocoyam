@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const GoogleMaps = () => {
 
-  const [locationOfRest, setLocationOfRest] = useState();
+  const [locationOfRest, setLocationOfRest] = useState([]);
 
   useEffect(() => {
     fetch("/all_locations")
@@ -12,8 +12,8 @@ const GoogleMaps = () => {
   }, [])
   
   const mapStyles = {        
-    height: "50vh",
-    width: "50%"};
+    height: "75vh",
+    width: "75%"};
   
   const defaultCenter = {
     lat: 40.730610, lng: -73.935242
@@ -25,8 +25,6 @@ const GoogleMaps = () => {
       lng: parseFloat(rest.long) 
     } 
   })})
-
-  console.log(locations)
   
   
   return (
@@ -40,8 +38,7 @@ const GoogleMaps = () => {
               return (
                 <Marker key={item.name} position={item.location} />
               )
-            })
-          }
+            })}
         </GoogleMap>
      </LoadScript>
   )

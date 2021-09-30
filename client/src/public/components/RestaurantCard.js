@@ -18,6 +18,8 @@ export default function RestaurantCard(){
         })
     },[id])
 
+    // Fetch reviews for restaurant 
+
     const locationOfRest = {
         name: restaurant.name,
         location: { 

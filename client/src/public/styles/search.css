@@ -1,0 +1,31 @@
+div {
+    justify-content: center;
+}
+#search-form input {
+    width: 90%;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    padding: 12px;min-height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 100px;
+    margin: 0;
+    font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+#search-form button[type="submit"] {
+    margin: 0;
+    width: auto;
+    padding: 12px;
+    min-height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 100px;
+    margin-left: -80px;
+    background-color: #0081a7;
+}
+
+#search-form button[type="submit"]:hover {
+    background-color: #f07167;
+    color: white;
+}

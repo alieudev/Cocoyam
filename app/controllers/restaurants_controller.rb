@@ -19,6 +19,36 @@ class RestaurantsController < ApplicationController
         render json: cordinates, status: :ok
     end
 
+    def test 
+        require "uri"
+        require "net/http"
+        url = URI("https://api.yelp.com/v3/businesses/5W55UFYVTAdPvvo5xH0DbA/reviews")
+
+        https = Net::HTTP.new(url.host, url.port)
+        https.use_ssl = true
+
+        request = Net::HTTP::Get.new(url)
+        request["Authorization"] = "Bearer K5Tf1q8zd_WxP33QLuYUUUUQVH0Y9oMzazd55AD7sbDpcWuJ2ZRtywRWBcU0QASrt9y-TQ7Ds8AqqMDPFbMqbauh6knSftNgqNRSC-8ilkyYZynrG3CyvBxdKaOhX3Yx"
+
+        response = https.request(request)
+        render json: response.read_body, status: :ok
+    end
+
+    def business
+        require "uri"
+        require "net/http"
+        url = URI("https://api.yelp.com/v3/businesses/5W55UFYVTAdPvvo5xH0DbA")
+
+        https = Net::HTTP.new(url.host, url.port)
+        https.use_ssl = true
+
+        request = Net::HTTP::Get.new(url)
+        request["Authorization"] = "Bearer K5Tf1q8zd_WxP33QLuYUUUUQVH0Y9oMzazd55AD7sbDpcWuJ2ZRtywRWBcU0QASrt9y-TQ7Ds8AqqMDPFbMqbauh6knSftNgqNRSC-8ilkyYZynrG3CyvBxdKaOhX3Yx"
+
+        response = https.request(request)
+        render json: response.read_body, status: :ok
+    end
+
     private 
     def user_params
         params.permit(:id, :username, :photo)
@@ -27,7 +57,4 @@ class RestaurantsController < ApplicationController
     def authorize
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
       end
-
-
-
 end
