@@ -7,7 +7,7 @@ export default function HomePage({restaurants}){
     return(
         <>
             <div className="map">
-                <GoogleMaps />
+                <GoogleMaps restaurants={restaurants}/>
             </div>
             <Search />
             <RestaurantList restaurants={restaurants}/>

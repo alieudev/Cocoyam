@@ -38,7 +38,7 @@ function SignUpForm({ onLogin }) {
          />
         </label>
          
-
+      <br />
       <label>Enter Password
       <input 
          className="login" 
@@ -48,15 +48,18 @@ function SignUpForm({ onLogin }) {
          onChange={(e) => setPassword(e.target.value)}
          /> 
       </label>
-         
-
+      <br />
+      <label>
+        Confirm Password
         <input 
-         className="login" 
-         type="password" 
-         placeholder="password confirmation" 
-         value={passwordConfirmation}   
-         onChange={(e) => setPasswordConfirmation(e.target.value)}
-         /> 
+          className="login" 
+          type="password" 
+          placeholder="password confirmation" 
+          value={passwordConfirmation}   
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+          /> 
+      </label>
+        
         
          <input 
          className="login" 

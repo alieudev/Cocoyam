@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api';
+import { Link } from 'react-router-dom'
 
 const GoogleMaps = () => {
 
@@ -13,7 +14,11 @@ const GoogleMaps = () => {
   useEffect(() => {
     fetch("/all_locations")
     .then(res => res.json())
-    .then( data => setLocationOfRest(data))
+    .then( data => 
+      {console.log(data)
+      setLocationOfRest(data)}
+      )
+
   }, [])
   
   const mapStyles = {        
@@ -24,11 +29,13 @@ const GoogleMaps = () => {
     lat: 40.730610, lng: -73.935242
   }
   const locations = locationOfRest.map( rest => { return (
-    {name : rest.name, 
+    {id : rest.id,
+    name : rest.name, 
     location: { 
       lat: parseFloat(rest.lat), 
       lng: parseFloat(rest.long) 
-    } 
+    }, 
+    image : rest.image 
   })})
   
   
@@ -54,9 +61,12 @@ const GoogleMaps = () => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
-              <div>
-                This is your restaurant info
-                <p>{selected.name}{selected.location.lat}</p>
+              <div style={{ width: "300px", height: "300px"}}>
+                <div className="address"></div>
+                <h2>{selected.name}</h2>
+                <img style={{ width:"250px", height:"200px"}} src={selected.image} alt={selected.name} />
+                <br />
+                <button className="link"><Link to={`restaurants/${selected.id}`}>View Restaurant</Link></button>
                 </div>
               
             </InfoWindow>

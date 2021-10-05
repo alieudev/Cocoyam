@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
     end
 
     def all_locations 
-        cordinates = Restaurant.select(:id, :name, :lat, :long)
+        cordinates = Restaurant.select(:id, :name, :lat, :long, :image)
         render json: cordinates, status: :ok
     end
 

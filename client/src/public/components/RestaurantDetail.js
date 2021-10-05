@@ -6,12 +6,12 @@ function RestaurantDetail({restaurants}) {
     {restaurants.length > 1 && restaurants.map((restaurant) => (
       <div key={restaurant.id} className="restaurant-list">
         <div className="card">
-          <Nav.Link href={`/restaurants/${restaurant.id}`}></Nav.Link>
-          <h2>Name: {restaurant.name}</h2>
+          <h2>{restaurant.name}</h2>
           <img src={restaurant.image} alt={restaurant.name} />
           <p>Location: {restaurant.street}</p>
           <p>Long: {restaurant.long} lat: {restaurant.lat}</p>
           <p>Rating: {restaurant.rating}</p>
+          <button><Nav.Link href={`/restaurants/${restaurant.id}`}>View Restaurant</Nav.Link></button>
         </div>
       </div>
 

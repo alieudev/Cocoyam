@@ -3,6 +3,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
-/* .card {
+.card {
     flex: 1 0 30%;
-} */
+    width: 400px;
+    height: 550px;
+}
+
+img {
+    width : 300px;
+    height : 300px;
+}
