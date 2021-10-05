@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow} from '@react-google-maps/api';
 
 const GoogleMaps = () => {
 
   const [locationOfRest, setLocationOfRest] = useState([]);
+  const [ selected, setSelected ] = useState({});
+  
+  const onSelect = item => {
+    setSelected(item);
+  }
 
   useEffect(() => {
     fetch("/all_locations")
@@ -36,9 +41,27 @@ const GoogleMaps = () => {
           center={defaultCenter}>
           {locations.map(item => {
               return (
-                <Marker key={item.name} position={item.location} />
+                <Marker key={item.name} 
+                position={item.location}
+                onClick={() => onSelect(item)} />
               )
             })}
+          {
+            selected.location && 
+            (
+              <InfoWindow
+              position={selected.location}
+              clickable={true}
+              onCloseClick={() => setSelected({})}
+            >
+              <div>
+                This is your restaurant info
+                <p>{selected.name}{selected.location.lat}</p>
+                </div>
+              
+            </InfoWindow>
+            )
+         }
         </GoogleMap>
      </LoadScript>
   )

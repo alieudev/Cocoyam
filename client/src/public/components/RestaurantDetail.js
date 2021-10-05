@@ -3,7 +3,7 @@ import "../styles/restaurant_list.css"
 
 function RestaurantDetail({restaurants}) {
   return (<>
-    {restaurants && restaurants.map((restaurant) => (
+    {restaurants.length > 1 && restaurants.map((restaurant) => (
       <div key={restaurant.id} className="restaurant-list">
         <div className="card">
           <Nav.Link href={`/restaurants/${restaurant.id}`}></Nav.Link>

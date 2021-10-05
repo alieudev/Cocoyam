@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "all_locations", to: "restaurants#all_locations"
   get "test", to: "restaurants#test"
   get "business", to: "restaurants#business"
+  patch "/update_user", to: "users#update_user"
+  patch "/change_password", to: "users#change_password"
 end

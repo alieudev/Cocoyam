@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../styles/test.css"
 import CarouselInfo from "./CarouselInfo"
 import { Carousel } from 'react-bootstrap'
+import ReviewForm from "./ReviewForm";
 
 function Test(){
     const [comments, setComments] = useState([])
@@ -29,10 +30,10 @@ function Test(){
     return(<>
     {/* <CarouselInfo restaurant = {business} /> */}
     {business && 
-    <Carousel>
+    <Carousel fade style={{ display:"flex", justifyContent:"center", alignItems:"center"}}>
     <Carousel.Item>
       <img
-        style={{width:"60%", height: "600px"}}
+        style={{width:"60%", height: "60%", float:"center"}}
         src={business.photos[0]}
         alt="First slide"
         
@@ -80,6 +81,7 @@ function Test(){
                 </div>
                 )}
         </div>
+        <ReviewForm />
     </div>
     </>)
 }

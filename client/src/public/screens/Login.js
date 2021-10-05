@@ -1,7 +1,8 @@
 import { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
-
+import NavBar from "../components/NavBar";
+import "../styles/login.css"
 
 function Login({ onLogin }) {
 
@@ -9,25 +10,30 @@ function Login({ onLogin }) {
 
     return (
       <div >
-      <div >
-         <div>
-      {showLogin ? (
-        <>
-      <LoginForm onLogin={onLogin} />
-      <div className="login">
-      Don't have an account? <button className="login" onClick={()=> setShowLogin(false)}>Sign up</button>
+        <div className="login">
+          <div>
+            {showLogin ? (
+              <div >
+                <NavBar />
+                <LoginForm onLogin={onLogin} />
+                <br />
+                <div>
+                Don't have an account? <button onClick={()=> setShowLogin(false)}>Sign up</button>
+                </div>
+              </div>
+            ) : (
+              <div >
+                <NavBar />
+                <SignUpForm onLogin={onLogin} />
+                <br />
+                <div>
+                  Already have an account? <button onClick={()=> setShowLogin(true)}>Log in</button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      </>
-      ) : (
-        <>
-        <SignUpForm onLogin={onLogin} />
-        <br />
-        Already have an account? <button onClick={()=> setShowLogin(true)}>Log in</button>
-        </>
-      )}
-    </div>
-        </div>
-        </div>
     )
 }
 
