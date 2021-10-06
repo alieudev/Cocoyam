@@ -3,14 +3,18 @@ import GoogleMaps from "../components/GoogleMaps";
 import "../styles/homepage.css"
 import Search from "../components/Search";
 
-export default function HomePage({restaurants}){
+export default function HomePage({restaurants, onSearch, searchTerm}){
     return(
         <>
             <div className="map">
                 <GoogleMaps restaurants={restaurants}/>
             </div>
-            <Search />
-            <RestaurantList restaurants={restaurants}/>
+            <br />
+            <Search onSearch={onSearch} />
+            <br />
+            <br />
+            <br />
+            <RestaurantList searchTerm={searchTerm} restaurants={restaurants}/>
         </>        
     )
 }

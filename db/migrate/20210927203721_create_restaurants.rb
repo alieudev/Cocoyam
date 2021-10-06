@@ -10,6 +10,7 @@ class CreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :long
       t.integer :rating
       t.string :image
+      t.string :yelp_id
 
       t.timestamps
     end

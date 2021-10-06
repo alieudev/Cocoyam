@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+    require "uri"
+    require "net/http"
+
     def index 
         restaurants = Restaurant.all 
         render json: restaurants, include: :reviews, status: :ok
@@ -20,8 +23,6 @@ class RestaurantsController < ApplicationController
     end
 
     def test 
-        require "uri"
-        require "net/http"
         url = URI("https://api.yelp.com/v3/businesses/5W55UFYVTAdPvvo5xH0DbA/reviews")
 
         https = Net::HTTP.new(url.host, url.port)
@@ -35,8 +36,6 @@ class RestaurantsController < ApplicationController
     end
 
     def business
-        require "uri"
-        require "net/http"
         url = URI("https://api.yelp.com/v3/businesses/5W55UFYVTAdPvvo5xH0DbA")
 
         https = Net::HTTP.new(url.host, url.port)

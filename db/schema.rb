@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_09_27_204739) do
     t.string "long"
     t.integer "rating"
     t.string "image"
+    t.string "yelp_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_09_27_204739) do
     t.string "remarks"
     t.integer "restaurant_id"
     t.integer "user_id"
+    t.string "name"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

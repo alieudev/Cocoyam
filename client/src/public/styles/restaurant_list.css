@@ -1,15 +1,11 @@
-.restaurant-list {
+/* .restaurant-list {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-.card {
-    flex: 1 0 30%;
-    width: 400px;
-    height: 550px;
+    margin-left: 20px;
 }
 
-img {
-    width : 300px;
-    height : 300px;
-}
+.image-container{
+    height: 220px;
+    justify-content: center;
+} */

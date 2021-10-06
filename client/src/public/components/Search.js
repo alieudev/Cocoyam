@@ -1,13 +1,14 @@
-import "../styles/search.css" 
-const Search = () => {
+import { Input } from "semantic-ui-react";
+const SearchForm = ({onSearch}) => {
     return(
-    <div id="container">
-        <form action="/" method="get" id="search-form">
-        <input type="text" name="search" placeholder="Search for restaurant" />
-        <button type="submit">Search</button>
-        </form>
-    </div>
+      <Input
+      action={{ color: 'blue', content: 'Search' }}
+      icon='search'
+      iconPosition='left'
+      placeholder='Search Restaurant'
+      onChange={onSearch}
+    />
   )
 }
 
-export default Search;
+export default SearchForm;

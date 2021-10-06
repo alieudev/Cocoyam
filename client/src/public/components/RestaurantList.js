@@ -1,11 +1,8 @@
 import React from "react";
-import "../styles/restaurant_list.css"
 import RestaurantDetail from "./RestaurantDetail";
 
-export default function RestaurantList({restaurants}){
+export default function RestaurantList({restaurants, searchTerm}){
     return(
-    <section className ="restaurant-list">
-        <RestaurantDetail restaurants={restaurants} />
-  </section>
+        <RestaurantDetail searchTerm={searchTerm} restaurants={restaurants} />
     );
 };

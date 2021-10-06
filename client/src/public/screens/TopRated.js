@@ -1,8 +1,7 @@
 import RestaurantDetail from "../components/RestaurantDetail"
 import { useEffect, useState } from "react"
-import "../styles/restaurant_list.css"
 
-export default function TopRated(){
+export default function TopRated({searchTerm}){
     const [ restaurants, setRestaurants] = useState([]);
     
     useEffect(()=> {
@@ -12,6 +11,6 @@ export default function TopRated(){
     }, [])
 
     return(<>
-        <RestaurantDetail restaurants={restaurants} />
+        <RestaurantDetail searchTerm={searchTerm} restaurants={restaurants} />
     </>)
 }

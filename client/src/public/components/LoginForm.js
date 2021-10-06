@@ -19,23 +19,21 @@ function LoginForm({ onLogin }) {
       });
     }
   
-    return (
-<div className="login">
-<form onSubmit={handleSubmit}>
-          <label>
-            Enter Username
-            <input className="login" placeholder="Username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-          </label>
-          <br/>
-          <label>
-            Enter Password
-            <input className="login" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          </label>
+return (
+  <div className="login">
+    <form onSubmit={handleSubmit}>
+      <label>
+        Enter Username
+        <input className="login" placeholder="Username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+      </label>
+      <br/>
+      <label>
+        Enter Password
+        <input className="login" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+      </label>
       
-            <input className="login" type="submit" value="Login"/>
-          </form>
-        </div>
-    );
-  }
+      <input className="login" type="submit" value="Login"/>
+    </form>
+  </div> );}
   
   export default LoginForm;

@@ -6,12 +6,14 @@ import HomePage from './public/screens/HomePage';
 import TopRated from './public/screens/TopRated';
 import RestaurantCard from './public/components/RestaurantCard';
 import RestaurantList from './public/components/RestaurantList';
-import Test from './public/components/Test';
+import './App.css';
+import Signup from './public/screens/Signup';
 
 function App() {
 
   const [user, setUser] = useState(false);
   const [restaurants, setRestaurants] = useState([]);
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     // auto-login
@@ -28,27 +30,32 @@ function App() {
         .then((data) => setRestaurants(data))
     }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  function handleOnChange(event){ 
+    setSearch(event.target.value)
+  }
 
+  if (!user) return <Login onLogin={setUser} />;
+  
+  // const filteredres = restaurants.filter( res => restaurants.name.toLowerCase().includes(res.name.toLowerCase()))
   return (
     <div className="App">
       <NavBar user={user} setUser={setUser}/>
          <Router>
             <Switch>
               <Route exact path="/">
-                <HomePage restaurants={restaurants}/>
+                <HomePage onSearch={handleOnChange} searchTerm={search} restaurants={restaurants}/>
               </Route>
               <Route exact path="/restaurants">
-                <RestaurantList restaurants={restaurants}/>
+                <RestaurantList searchTerm={search} restaurants={restaurants}/>
               </Route>
               <Route exact path="/top_restaurants">
-                <TopRated />
+                <TopRated searchTerm={search}/>
               </Route>
               <Route exact path="/restaurants/:id">
                 <RestaurantCard />
               </Route>
-              <Route exact path="/test">
-                <Test />
+              <Route exact path="/signup">
+                <Signup />
               </Route>
             </Switch>
          </Router>
