@@ -1,0 +1,80 @@
+[ 
+    {
+        "id": 43,
+        "url": "https://www.yelp.com/biz/africa-kine-restaurant-new-york-2?adjust_creative=JpdKfokHU6gE_qqoxecpzg&hrid=S-ugpZWtX2T7kSqC-cxf4g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=JpdKfokHU6gE_qqoxecpzg",
+        "text": "Ordered takeout from here and it was delicious! Large portions and everything tasted fresh.",
+        "rating": 5,
+        "time_created": "2021-07-19 09:25:24",
+        "user": {
+            "id": "t3LtEeBk1DFytOufv-JO4A",
+            "profile_url": "https://www.yelp.com/user_details?userid=t3LtEeBk1DFytOufv-JO4A",
+            "image_url": null,
+            "name": "Sivan B."
+        }
+    },
+    {
+        "id": 43,
+        "url": "https://www.yelp.com/biz/africa-kine-restaurant-new-york-2?adjust_creative=JpdKfokHU6gE_qqoxecpzg&hrid=bfxZkLaLT_BHGBKfNcXRfg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=JpdKfokHU6gE_qqoxecpzg",
+        "text": "BOTTOM LINE: the seasoning on the meat will have you begging anyone in the vicinity to bring you some.\nTIP/S: Have the fresh baked baguette \n...WHO: party...",
+        "rating": 5,
+        "time_created": "2020-07-17 12:28:13",
+        "user": {
+            "id": "xf_JxOeQDVZU1VTpoZpTMw",
+            "profile_url": "https://www.yelp.com/user_details?userid=xf_JxOeQDVZU1VTpoZpTMw",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/photo/T_T6grNzzfC_PsrW6Y47Kg/o.jpg",
+            "name": "Minah M."
+        }
+    },
+    {
+        "id": 43,
+        "url": "https://www.yelp.com/biz/africa-kine-restaurant-new-york-2?adjust_creative=JpdKfokHU6gE_qqoxecpzg&hrid=nS0Ub5hEYz-R2auIOrYwkg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=JpdKfokHU6gE_qqoxecpzg",
+        "text": "I continue to LOVE the food here, but they simply haven't figured out how to do good business, as it pertains to take out. Everyone behind the counter is...",
+        "rating": 4,
+        "time_created": "2021-01-22 20:28:21",
+        "user": {
+            "id": "uZkSzgNHBMEbbMho-QZK1A",
+            "profile_url": "https://www.yelp.com/user_details?userid=uZkSzgNHBMEbbMho-QZK1A",
+            "image_url": "https://s3-media4.fl.yelpcdn.com/photo/vlD2PxeJ_Q7NgoHQsPrLDw/o.jpg",
+            "name": "Toni W."
+        }
+    }, 
+    {
+        "id": 44,
+        "url": "https://www.yelp.com/biz/la-savane-new-york?adjust_creative=JpdKfokHU6gE_qqoxecpzg&hrid=d0tr10DUTcfEhNsAvQqWlg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=JpdKfokHU6gE_qqoxecpzg",
+        "text": "This might be one of my favorite restaurants in the city; definitely worth the trip uptown! The lamb shank and grilled whole fish are SO good and...",
+        "rating": 5,
+        "time_created": "2021-10-06 09:37:34",
+        "user": {
+            "id": "WYfxhI_BzNmL4vEL6Hc6qQ",
+            "profile_url": "https://www.yelp.com/user_details?userid=WYfxhI_BzNmL4vEL6Hc6qQ",
+            "image_url": null,
+            "name": "Sissy S."
+        }
+    },
+    {
+        "id": 44,
+        "url": "https://www.yelp.com/biz/la-savane-new-york?adjust_creative=JpdKfokHU6gE_qqoxecpzg&hrid=tL-2DXgUn-mZBRrLVaTSag&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=JpdKfokHU6gE_qqoxecpzg",
+        "text": "OMG! We ordered from here tonight delivery through Uber eats. Gumbo sauce, plantains, foufou, Fried fish. TERRIBLE! This place should be ashamed! Serving...",
+        "rating": 1,
+        "time_created": "2021-08-18 18:26:54",
+        "user": {
+            "id": "J_pljOfe85CWVYHf0wasZw",
+            "profile_url": "https://www.yelp.com/user_details?userid=J_pljOfe85CWVYHf0wasZw",
+            "image_url": "https://s3-media3.fl.yelpcdn.com/photo/KnMj-w8my4kEp-kksWENoQ/o.jpg",
+            "name": "Breana T."
+        }
+    },
+    {
+        "id": 44,
+        "url": "https://www.yelp.com/biz/la-savane-new-york?adjust_creative=JpdKfokHU6gE_qqoxecpzg&hrid=NdDCM1t9PmTLabOJh8yJOg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=JpdKfokHU6gE_qqoxecpzg",
+        "text": "Just look at the pictures.  Thrown in the garbage. The food was inedible and if it wasn't so far I would take it back.  I know my way around West African...",
+        "rating": 1,
+        "time_created": "2021-09-17 16:57:06",
+        "user": {
+            "id": "D1iPaLo95SRmlJJwoEFQXQ",
+            "profile_url": "https://www.yelp.com/user_details?userid=D1iPaLo95SRmlJJwoEFQXQ",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/photo/b9CPUYar3u6V7kyF-vSv2A/o.jpg",
+            "name": "Amy W."
+        }
+    }
+]

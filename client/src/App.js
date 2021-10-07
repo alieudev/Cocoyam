@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react"
 import HomePage from './public/screens/HomePage';
 import TopRated from './public/screens/TopRated';
-import RestaurantCard from './public/components/RestaurantCard';
-import RestaurantList from './public/components/RestaurantList';
+import ShowCard from './public/screens/ShowCard';
+import IndexPage from './public/screens/IndexPage';
 import './App.css';
 import Signup from './public/screens/Signup';
 
@@ -17,11 +17,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
+    fetch("/me").then((r) => {if (r.ok) { r.json().then((user) => setUser(user));} });
   }, []);
 
   useEffect(() => {
@@ -30,13 +26,10 @@ function App() {
         .then((data) => setRestaurants(data))
     }, []);
 
-  function handleOnChange(event){ 
-    setSearch(event.target.value)
-  }
+  function handleOnChange(event){ setSearch(event.target.value) }
 
   if (!user) return <Login onLogin={setUser} />;
   
-  // const filteredres = restaurants.filter( res => restaurants.name.toLowerCase().includes(res.name.toLowerCase()))
   return (
     <div className="App">
       <NavBar user={user} setUser={setUser}/>
@@ -46,13 +39,13 @@ function App() {
                 <HomePage onSearch={handleOnChange} searchTerm={search} restaurants={restaurants}/>
               </Route>
               <Route exact path="/restaurants">
-                <RestaurantList searchTerm={search} restaurants={restaurants}/>
+                <IndexPage searchTerm={search} restaurants={restaurants}/>
               </Route>
               <Route exact path="/top_restaurants">
                 <TopRated searchTerm={search}/>
               </Route>
               <Route exact path="/restaurants/:id">
-                <RestaurantCard />
+                <ShowCard />
               </Route>
               <Route exact path="/signup">
                 <Signup />

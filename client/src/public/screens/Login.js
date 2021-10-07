@@ -2,9 +2,8 @@ import { useState } from "react";
 import SignUpForm from '../components/SignUpForm'
 import LoginForm from "../components/LoginForm";
 import NavBar from "../components/NavBar";
-import "../styles/login.css"
-import { Button, Segment, Grid, Form, Divider} from 'semantic-ui-react'
-import {Nav} from 'react-bootstrap'
+// import { Button, Segment, Grid, Form, Divider} from 'semantic-ui-react'
+// import {Nav} from 'react-bootstrap'
 
 function Login({ onLogin }) {
 

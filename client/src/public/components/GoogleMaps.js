@@ -23,10 +23,10 @@ const GoogleMaps = () => {
   
   const mapStyles = {        
     height: "75vh",
-    width: "75%"};
+    width: "100%"};
   
   const defaultCenter = {
-    lat: 40.730610, lng: -73.935242
+    lat: 40.80, lng: -73.94
   }
   const locations = locationOfRest.map( rest => { return (
     {id : rest.id,
@@ -44,7 +44,7 @@ const GoogleMaps = () => {
        googleMapsApiKey='AIzaSyBknD2P1oluRXj4UzMnn3bIEzAYQnomsDo'>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={12}
+          zoom={11}
           center={defaultCenter}>
           {locations.map(item => {
               return (

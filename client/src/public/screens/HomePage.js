@@ -1,12 +1,11 @@
-import RestaurantList from "../components/RestaurantList";
+import IndexPage from "../screens/IndexPage";
 import GoogleMaps from "../components/GoogleMaps";
-import "../styles/homepage.css"
 import Search from "../components/Search";
 
 export default function HomePage({restaurants, onSearch, searchTerm}){
     return(
         <>
-            <div className="map">
+            <div className="col-10 offset-1 mt-4 ">
                 <GoogleMaps restaurants={restaurants}/>
             </div>
             <br />
@@ -14,7 +13,7 @@ export default function HomePage({restaurants, onSearch, searchTerm}){
             <br />
             <br />
             <br />
-            <RestaurantList searchTerm={searchTerm} restaurants={restaurants}/>
+            <IndexPage searchTerm={searchTerm} restaurants={restaurants}/>
         </>        
     )
 }

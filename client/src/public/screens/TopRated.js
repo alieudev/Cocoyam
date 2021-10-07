@@ -1,4 +1,4 @@
-import RestaurantDetail from "../components/RestaurantDetail"
+import RestaurantDetail from "./IndexPage"
 import { useEffect, useState } from "react"
 
 export default function TopRated({searchTerm}){

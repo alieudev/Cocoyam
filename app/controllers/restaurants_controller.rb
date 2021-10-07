@@ -23,7 +23,7 @@ class RestaurantsController < ApplicationController
     end
 
     def test 
-        url = URI("https://api.yelp.com/v3/businesses/5W55UFYVTAdPvvo5xH0DbA/reviews")
+        url = URI("")
 
         https = Net::HTTP.new(url.host, url.port)
         https.use_ssl = true

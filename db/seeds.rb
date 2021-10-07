@@ -11,8 +11,11 @@ require 'json'
 require "uri"
 require "net/http"
 
-file = File.read('/Users/alieubaldeh/Development/code/phase5/african_restaurants/db/resdata.json')
-rest = JSON.parse(file)
+# file = File.read('/Users/alieubaldeh/Development/code/phase5/african_restaurants/db/resdata.json')
+# rest = JSON.parse(file)
+
+file = File.read('/Users/alieubaldeh/Development/code/phase5/african_restaurants/db/reviews.json')
+reviews = JSON.parse(file)
 
 # puts all_res.length()
 
@@ -24,30 +27,47 @@ rest = JSON.parse(file)
 # puts rest.length()
 
 puts "Deleting old stuff..."
-    Restaurant.destroy_all
+    # Restaurant.destroy_all
     User.destroy_all
     Review.destroy_all
 
-    puts "🌱 Seeding users..."
-    30.times do 
-        User.create!(username: Faker::Name.unique.name, photo: "https://1.bp.blogspot.com/-Wd9-K1sP7QY/XIsn37QQ1KI/AAAAAAAAn5Y/1TdnrOvKXVg64sxomo0kM0OtmdVgRkvdgCLcBGAs/s1600/african_restaurant.jpg", password_digest: "password")
-    end
+   
 
-    puts "🌱 Seeding restaurants..."
+    # puts "🌱 Seeding restaurants..."
 
-    rest.each do |res|
-        Restaurant.create!(
-        yelp_id: res["id"],
-        name: res["name"],
-        street: res["location"]["address1"],
-        city: res["location"]["city"],
-        state: res["location"]["state"], 
-        zip: res["location"]["zip_code"], 
-        lat: res["coordinates"]["latitude"], 
-        long: res["coordinates"]["longitude"], 
-        rating: res["rating"],
-        image: res["image_url"]
+    # rest.each do |res|
+    #     Restaurant.create!(
+    #     yelp_id: res["id"],
+    #     name: res["name"],
+    #     street: res["location"]["address1"],
+    #     city: res["location"]["city"],
+    #     state: res["location"]["state"], 
+    #     zip: res["location"]["zip_code"], 
+    #     lat: res["coordinates"]["latitude"], 
+    #     long: res["coordinates"]["longitude"], 
+    #     rating: res["rating"],
+    #     image: res["image_url"]
+    #     )
+    # end
+
+
+    puts "Seeding Reviews"
+    reviews.each do |review, idx|
+        User.create!(
+            username: review["user"]["name"] << [1,2,3,4,5,6].sample,
+            user_id: [1,2].sample,
+            photo: review["image_url"], 
+            password_digest: "password"
+        )
+        Review.create!(
+            name: review["user"]["name"], 
+            remarks: review["text"], 
+            restaurant_id: review["id"], 
+            user_id: User.ids.last, 
+            rating: review["rating"],
+            image: review["image_url"]
         )
     end
+
 
 puts "✅ Done seeding!"
