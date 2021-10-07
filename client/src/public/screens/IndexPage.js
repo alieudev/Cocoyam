@@ -3,10 +3,10 @@ import { Rating } from 'semantic-ui-react'
 
 function IndexPage({restaurants, searchTerm}) {
 
-  const searchResults = restaurants && restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(searchTerm) )
+  const searchResults = restaurants.length && restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(searchTerm) )
 
   return(<div class="col-10 offset-1">
-    {searchResults.map((restaurant) => (
+    {restaurants.length && searchResults.map((restaurant) => (
       <div class="card mb-3">
       <div class="row">
           <div class="col-md-4">

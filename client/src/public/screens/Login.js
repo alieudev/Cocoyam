@@ -2,6 +2,7 @@ import { useState } from "react";
 import SignUpForm from '../components/SignUpForm'
 import LoginForm from "../components/LoginForm";
 import NavBar from "../components/NavBar";
+import { Button } from 'react-bootstrap'
 // import { Button, Segment, Grid, Form, Divider} from 'semantic-ui-react'
 // import {Nav} from 'react-bootstrap'
 
@@ -35,8 +36,8 @@ function Login({ onLogin }) {
                 <NavBar />
                 <LoginForm onLogin={onLogin} />
                 <br />
-                <div>
-                Don't have an account? <button onClick={()=> setShowLogin(false)}>Sign up</button>
+                <div className="col-6 offset-3">
+                Don't have an account? <Button onClick={()=> setShowLogin(false)}>Sign up</Button>
                 </div>
               </div>
             ) : (
@@ -44,8 +45,8 @@ function Login({ onLogin }) {
                 <NavBar />
                 <SignUpForm onLogin={onLogin} />
                 <br />
-                <div>
-                  Already have an account? <button onClick={()=> setShowLogin(true)}>Log in</button>
+                <div className="col-6 offset-3">
+                  Already have an account? <Button onClick={()=> setShowLogin(true)}>Log in</Button>
                 </div>
               </div>
             )}

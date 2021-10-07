@@ -1,15 +1,18 @@
-import { useParams } from "react-router"
+import { useParams, useHistory } from "react-router"
 import { useEffect, useState } from "react";
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import ReviewForm from "../components/ReviewForm";
 import { Rating } from 'semantic-ui-react'
 
-export default function ShowCard(){
+export default function ShowCard({user}){
 
+    const history = useHistory()
     const [restaurant, setRestaurant] = useState([])
     const [reviews, setReviews] = useState([])
+    const [remarks, setRemarks] = useState("")
+    const [userrating, setUserrating] = useState(0)
     
-    let { id, user } = useParams();
+    let { id} = useParams();
 
     useEffect(()=>{
         fetch(`/restaurants/${id}`)
@@ -19,8 +22,6 @@ export default function ShowCard(){
         setReviews(data.reviews)
         })
     },[id])
-
-    // Fetch reviews for restaurant 
 
     const locationOfRest = {
         name: restaurant.name,
@@ -35,28 +36,69 @@ export default function ShowCard(){
         width: "100%"
     };
 
-    console.log(restaurant)
+    const handleDelete = async (e, review) => {
+        e.preventDefault()
+        const res = await fetch(`/reviews/${review.id}`, {
+            method: 'DELETE',
+            headers: { Accept: 'application/json' }
+        });
+            const parsedBody = await res.json();
+            console.log(parsedBody)
+            setReviews(reviews.filter(comment => comment.id !== review.id ));
+            history.push(`/restaurants/${restaurant.id}`);
+    }
 
-    function handleDelete(){}
-    function handleEdit(){}
-    function handleReview(){}
 
-    // function handleReview(e){ 
-    //         e.preventDefault();
-    //         fetch(`/restaurant/${id}`, {
-    //           method: "POST",
-    //           headers: {
-    //             "Content-Type": "application/json",
-    //           },
-    //           body: JSON.stringify({ username, password }),
-    //         }).then((r) => {
-    //           if (r.ok) {
-    //             r.json().then((user) => onLogin(user));
-    //           } 
-    //         });
-    // }
+const handleEdit = async (e) => {
+    e.preventDefault()
+    const res = await fetch(`/restaurant/${restaurant.id}`, {
+        method: 'PATCH',
+        headers: { 
+            'Content-Type': 'application/json',
+            Accept: 'application/json' 
+        },
+        body: JSON.stringify({
+            name: user.name,
+            rating: userrating,
+            remarks: remarks,
+            image: "",
+            user_id: user.id,
+            restaurant_id: restaurant.id
+        })
+    });
+        const parsedBody = await res.json();
+        // setPlayerList(players.map(player => player.id === parseInt(id) ? parsedBody : player));
+        console.log(parsedBody)
+        history.push(`/restaurants/${restaurant.id}`);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const res = await fetch(`/reviews`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                Accept: 'application/json' 
+            },
+            body: JSON.stringify({
+                name: "Alieu B.",
+                remarks: remarks,
+                restaurant_id: restaurant.id,
+                user_id: user.id, 
+                rating: userrating
+            })
+        });
+            const parsedBody = await res.json();
+            setReviews([...reviews, parsedBody])
+            setUserrating(0)
+            setRemarks("")
+            history.push(`/restaurants/${restaurant.id}`);
+    }
+
+    
     return(
-    <div class="row">
+    <div class="col-10 offset-1">
+    <div class="row ">
         <div class="col-6 mt-3 ">
             <div class="card mb-3">
                 <img class="img-fluid" style={{width: "100%", height: "200px", objectFit: "cover"}} alt="" src={restaurant.image}/>
@@ -64,9 +106,6 @@ export default function ShowCard(){
                     <h5 class="card-title">{restaurant.name}</h5>
                     <Rating icon='star' defaultRating={5} maxRating={5} />
                 </div>
-                {/* <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-muted">{restaurant.street}</li>
-                </ul> */}
                 <p class="card-text">
                       <small class="text-muted">
                         <div>
@@ -85,7 +124,7 @@ export default function ShowCard(){
                         mapContainerStyle={mapStyles}
                         zoom={15}
                         center={locationOfRest.location}>
-                    <Marker key={locationOfRest.name} position={locationOfRest.location} />
+                    <Marker key={ locationOfRest.name} position={locationOfRest.location} />
                     </GoogleMap>
                 </LoadScript>
             </div>
@@ -100,61 +139,14 @@ export default function ShowCard(){
                 <h5 class="card-title">{review.name}</h5>
                 <Rating icon='star' defaultRating={review.rating} maxRating={5} />
                 <p class="card-text">{review.remarks}</p>
-                {review.user && (review.user.id === id)? <button class="btn btn-sm btn-danger">Delete</button> : ""} )  
+                { review.user_id === user.id ? <div> <button class="btn btn-sm btn-info" onClick={handleEdit}>Edit</button>        <button class="btn btn-sm btn-danger" onClick={(e) => handleDelete(e, review)}>Delete</button> </div>  : ""}   
             </div>
             </div>
             ))}
             <br />
-            <ReviewForm handleReview={handleReview}></ReviewForm>
+            <ReviewForm setRemarks={setRemarks} remarks={remarks}  rating={userrating} setRating={setUserrating} handleReview={handleSubmit}></ReviewForm>
         
         </div>
+    </div>
     </div>)
 }
-
-    // return(
-    //     <div className="row">
-    //         <div className="col-6 offset-3">
-    //             <div class="card mb-3">
-    //                 {restaurant && <img src={restaurant.image} className="card-img-top" style={{height:"400px"}} alt="..." /> }
-    //                 <div className="card-body">
-    //                     {restaurant && <h5 className="card-title">{restaurant.name}</h5>}
-    //                     <p className="card-text">This is a desc</p>
-    //                 </div>
-    //                 <ul className="list-group list-group-flush">
-    //                     <li className="list-group-item text-muted">{restaurant.street}</li>
-    //                 </ul>
-    //                 <div className="card-body">
-    //                     <a className="card-link btn btn-info" href="#" alt="...">Edit</a>
-    //                     <form className="d-inline"  method="POST">
-    //                         <button className="btn btn-danger">Delete</button>
-    //                     </form>
-    //                 </div>
-    //                 <div className="card-footer text-muted">
-    //                     Open or Close ? 
-    //                 </div>
-    //             </div>
-    //         </div>
-
-    //         <div className="row sm-12">
-    //             <div className="col-6">
-    //                 <h1>Reviews</h1>
-    //                 <div className="reviews">
-    //                     {reviews.map( review => (
-    //                     <div className="review">
-    //                         <h3>{review.name}</h3>
-    //                         <p>{review.remarks}</p>
-    //                         <p>Rating: {review.rating}</p>
-    //                     </div>))}
-    //                 </div>
-    //             <ReviewForm></ReviewForm >
-    //             </div>
-
-    //             <div className="col-6">
-    //                 
-    //                 <div className="address">{restaurant.street}</div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // )
-
-

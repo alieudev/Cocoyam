@@ -45,7 +45,7 @@ function App() {
                 <TopRated searchTerm={search}/>
               </Route>
               <Route exact path="/restaurants/:id">
-                <ShowCard />
+                <ShowCard user={user}/>
               </Route>
               <Route exact path="/signup">
                 <Signup />
