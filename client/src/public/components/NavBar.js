@@ -17,9 +17,9 @@ const NavBar = ({ user, setUser }) => {
             <Navbar.Brand href="/">Cocoyam</Navbar.Brand>
             {/* {user && <Nav.Link href={`/user/${user.id}`}>{user && user.username}</Nav.Link>} */}
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
+          { user && user.username ? <Navbar.Text>
               Signed in as: <a href="#login">{user && user.username}</a>
-            </Navbar.Text>
+            </Navbar.Text> : ""}
             <Nav.Link href="/top_restaurants">Top Rated</Nav.Link>
             <Nav.Link href="/restaurants">Restaurants</Nav.Link>
           </Navbar.Collapse>
