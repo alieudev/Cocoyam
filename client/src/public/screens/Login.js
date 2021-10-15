@@ -54,42 +54,6 @@ function Login({ onLogin }) {
         </div>
       </div>
    )
-    // return(<div>
-    // <NavBar />
-    // <Segment placeholder variant="light" style={{width: "1400px", height:"800px"}}>
-    //   <Grid columns={2} relaxed='very' stackable>
-    //     <Grid.Column>
-    //       <Form primary onSubmit={handleSubmit}>
-    //         <Form.Input
-    //           icon='user'
-    //           iconPosition='left'
-    //           label='Username'
-    //           placeholder='Username'
-    //           value={username} 
-    //           onChange={(e) => setUsername(e.target.value)}
-    //         />
-    //         <Form.Input
-    //           icon='lock'
-    //           iconPosition='left'
-    //           label='Password'
-    //           type='password'
-    //           placeholder='Password'
-    //           value={password} onChange={(e) => setPassword(e.target.value)}
-    //         />
-  
-    //         <Button color="blue" type="submit" content='Login'  />
-    //       </Form>
-    //     </Grid.Column>
-  
-    //     <Grid.Column verticalAlign='middle'>
-    //       <Button content='Sign up' icon='signup' size='big' ><Nav.Link href="/signup" />
-    //       </Button>
-    //     </Grid.Column>
-    //   </Grid>
-  
-    //   <Divider vertical>Or</Divider>
-    // </Segment>
-    // </div>)
 }
 
 export default Login;
