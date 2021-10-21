@@ -119,7 +119,7 @@ const handleEdit = async (e) => {
             <div id='map' >
                 <h2>Location</h2>
                 <LoadScript className="map"
-                    googleMapsApiKey='AIzaSyBknD2P1oluRXj4UzMnn3bIEzAYQnomsDo'>
+                    googleMapsApiKey={process.env.API_KEY}>
                     <GoogleMap
                         mapContainerStyle={mapStyles}
                         zoom={15}

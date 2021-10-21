@@ -11,44 +11,30 @@ require 'json'
 require "uri"
 require "net/http"
 
-# file = File.read('/Users/alieubaldeh/Development/code/phase5/african_restaurants/db/resdata.json')
-# rest = JSON.parse(file)
-
-file = File.read('/Users/alieubaldeh/Development/code/phase5/african_restaurants/db/reviews.json')
+file = File.read('./reviews.json')
 reviews = JSON.parse(file)
 
-# puts all_res.length()
-
-# rest = []
-# all_res.each do |res|
-#     rest.push(res) unless rest.include?(res[:id])
-# end
-
-# puts rest.length()
-
 puts "Deleting old stuff..."
-    # Restaurant.destroy_all
+    Restaurant.destroy_all
     User.destroy_all
     Review.destroy_all
 
-   
+    puts "🌱 Seeding restaurants..."
 
-    # puts "🌱 Seeding restaurants..."
-
-    # rest.each do |res|
-    #     Restaurant.create!(
-    #     yelp_id: res["id"],
-    #     name: res["name"],
-    #     street: res["location"]["address1"],
-    #     city: res["location"]["city"],
-    #     state: res["location"]["state"], 
-    #     zip: res["location"]["zip_code"], 
-    #     lat: res["coordinates"]["latitude"], 
-    #     long: res["coordinates"]["longitude"], 
-    #     rating: res["rating"],
-    #     image: res["image_url"]
-    #     )
-    # end
+    rest.each do |res|
+        Restaurant.create!(
+        yelp_id: res["id"],
+        name: res["name"],
+        street: res["location"]["address1"],
+        city: res["location"]["city"],
+        state: res["location"]["state"], 
+        zip: res["location"]["zip_code"], 
+        lat: res["coordinates"]["latitude"], 
+        long: res["coordinates"]["longitude"], 
+        rating: res["rating"],
+        image: res["image_url"]
+        )
+    end
 
 
     puts "Seeding Reviews"

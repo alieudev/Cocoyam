@@ -29,6 +29,7 @@ function App() {
   function handleOnChange(event){ setSearch(event.target.value) }
 
   if (!user) return <Login onLogin={setUser} />;
+
   
   return (
     <div className="App">
